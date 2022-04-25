@@ -9,12 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     // LABELS
+    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    
     @IBOutlet weak var operationValue: UILabel!
     @IBOutlet weak var Output: UILabel!
     
     var Input = ""
     var counter = 1
-    var num = 0
+    var num = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +95,7 @@ class ViewController: UIViewController {
     @IBAction func posNegative(_ sender: Any) {
         counter += 1
         if counter%2>0 {
-            num = Int(Input) ?? 0
+            num = Double(Input) ?? 0.0
             Input = String(num * -1)
         }
         operationValue.text = Input
