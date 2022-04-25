@@ -93,10 +93,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func posNegative(_ sender: Any) {
+        var newNum = ""
         counter += 1
         if counter%2>0 {
             num = Double(Input) ?? 0.0
-            Input = String(num * -1)
+            num = num * -1
+            newNum = formatOutput(result: num)
+            Input = newNum
         }
         operationValue.text = Input
     }
