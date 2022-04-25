@@ -80,9 +80,6 @@ class ViewController: UIViewController {
         if char == "+" {
             return true
         }
-        if char == "." {
-            return true
-        }
         else {
             return false
         }
