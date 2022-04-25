@@ -296,26 +296,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et6-A6-Ms3">
                                 <rect key="frame" x="0.0" y="44" width="414" height="136.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-Eu-HoZ">
-                                        <rect key="frame" x="0.0" y="69" width="404" height="67.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6e-Q2-Wsp">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="69"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="57"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6e-Q2-Wsp">
+                                        <rect key="frame" x="2" y="40" width="404" height="68.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Lid-Eu-HoZ" firstAttribute="top" secondItem="S6e-Q2-Wsp" secondAttribute="bottom" id="12g-yI-WbZ"/>
-                                    <constraint firstItem="Lid-Eu-HoZ" firstAttribute="height" secondItem="S6e-Q2-Wsp" secondAttribute="height" multiplier="0.981818" id="Aqc-Ap-hRv"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lid-Eu-HoZ" secondAttribute="trailing" constant="10" id="SCU-b3-3D1"/>
-                                    <constraint firstItem="Lid-Eu-HoZ" firstAttribute="leading" secondItem="et6-A6-Ms3" secondAttribute="leading" id="VZU-M1-Hy7"/>
-                                    <constraint firstAttribute="bottom" secondItem="Lid-Eu-HoZ" secondAttribute="bottom" id="Yb6-3p-9xw"/>
+                                    <constraint firstAttribute="bottom" secondItem="S6e-Q2-Wsp" secondAttribute="bottom" id="VEz-GM-01p"/>
                                     <constraint firstItem="S6e-Q2-Wsp" firstAttribute="top" secondItem="et6-A6-Ms3" secondAttribute="top" id="h1T-Lr-A7V"/>
                                     <constraint firstAttribute="trailing" secondItem="S6e-Q2-Wsp" secondAttribute="trailing" constant="10" id="p9V-hw-QS9"/>
                                     <constraint firstItem="S6e-Q2-Wsp" firstAttribute="leading" secondItem="et6-A6-Ms3" secondAttribute="leading" id="yCc-Ui-wkj"/>
@@ -336,7 +326,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Output" destination="Lid-Eu-HoZ" id="MIW-Hu-sYt"/>
                         <outlet property="operationValue" destination="S6e-Q2-Wsp" id="pNX-dT-TNt"/>
                     </connections>
                 </viewController>

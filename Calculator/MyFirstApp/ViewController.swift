@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var Output: UILabel!
     
     var Input = ""
-    var calc = ""
     var counter = 1
     var num = 0
     
@@ -26,7 +25,7 @@ class ViewController: UIViewController {
     func clearAll() {
         Input = ""
         operationValue.text = ""
-        Output.text = ""
+        //Output.text = ""
     }
     
     func addInput(value: String) {
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     func formatOutput(result: Double) -> String {
-        if result.truncatingRemainder(dividingBy: 1)==0 {
+        if result.truncatingRemainder(dividingBy: 1) == 0 {
             return String(format: "%.0f", result)
         }
         else {
@@ -116,7 +115,10 @@ class ViewController: UIViewController {
     
     @IBAction func Equals(_ sender: Any) {
         if validInput() {
-            let outputPercent = Input.replacingOccurrences(of: "%", with: "*.01")
+            if !Input.contains(".") {
+                Input += ".00"
+            }
+            let outputPercent = Input.replacingOccurrences(of: "%", with: "*0.01")
             let Expression = NSExpression(format: outputPercent)
             let result = Expression.expressionValue(with: nil, context: nil) as! Double
             let outputString = formatOutput(result: result)
