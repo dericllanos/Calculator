@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     // LABELS
     @IBOutlet weak var operationValue: UILabel!
-    @IBOutlet weak var Output: UILabel!
     
     var Input = ""
     
@@ -19,6 +18,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         clearAll()
     }
+    
     //CUSTOM FUNCTIONS
     func clearAll() {
         Input = ""
