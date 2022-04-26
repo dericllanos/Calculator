@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Output: UILabel!
     
     var Input = ""
-    var counter = 1
+    //var counter = 1
     var num = 0.0
     
     override func viewDidLoad() {
@@ -94,18 +94,19 @@ class ViewController: UIViewController {
     
     @IBAction func posNegative(_ sender: Any) {
         var newNum = ""
-        counter += 1
-        if counter%2>0 {
-            num = Double(Input) ?? 0.0
-            num = num * -1
-            newNum = formatOutput(result: num)
-            Input = newNum
-        }
+        
+        num = Double(Input) ?? 0.0
+        num = num * -1
+        newNum = formatOutput(result: num)
+        Input = newNum
         operationValue.text = Input
     }
     
     @IBAction func Percentage(_ sender: Any) {
-        addInput(value: "%")
+        var percentage = Double(Input) ?? 0.0
+        percentage = percentage * 0.01
+        Input = String(percentage)
+        operationValue.text = Input
     }
     
     @IBAction func decimal(_ sender: Any) {
@@ -117,8 +118,8 @@ class ViewController: UIViewController {
             if !Input.contains(".") {
                 Input += ".00"
             }
-            let outputPercent = Input.replacingOccurrences(of: "%", with: "*0.01")
-            let Expression = NSExpression(format: outputPercent)
+            //let outputPercent = Input.replacingOccurrences(of: "%", with: "*0.01")
+            let Expression = NSExpression(format: Input)
             let result = Expression.expressionValue(with: nil, context: nil) as! Double
             let outputString = formatOutput(result: result)
             Input = outputString
