@@ -9,14 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     // LABELS
-    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-    
     @IBOutlet weak var operationValue: UILabel!
     @IBOutlet weak var Output: UILabel!
     
     var Input = ""
-    //var counter = 1
-    var num = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +23,6 @@ class ViewController: UIViewController {
     func clearAll() {
         Input = ""
         operationValue.text = ""
-        //Output.text = ""
     }
     
     func addInput(value: String) {
@@ -93,11 +88,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func posNegative(_ sender: Any) {
-        var newNum = ""
-        num = Double(Input) ?? 0.0
+        var num = Double(Input) ?? 0.0
         num = num * -1
-        newNum = formatOutput(result: num)
-        Input = newNum
+        Input = formatOutput(result: num)
         operationValue.text = Input
     }
     
@@ -117,7 +110,6 @@ class ViewController: UIViewController {
             if !Input.contains(".") {
                 Input += ".00"
             }
-            //let outputPercent = Input.replacingOccurrences(of: "%", with: "*0.01")
             let Expression = NSExpression(format: Input)
             let result = Expression.expressionValue(with: nil, context: nil) as! Double
             let outputString = formatOutput(result: result)
