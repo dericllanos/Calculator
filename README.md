@@ -9,4 +9,5 @@ Possible improvements:
 
 Fixes:
 - Percentage and +/- buttons fixed to mutate on tap.
+- UI constraint warnings fixed.
     
