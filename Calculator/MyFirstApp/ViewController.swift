@@ -112,9 +112,8 @@ class ViewController: UIViewController {
             }
             let Expression = NSExpression(format: Input)
             let result = Expression.expressionValue(with: nil, context: nil) as! Double
-            let outputString = formatOutput(result: result)
-            Input = outputString
-            operationValue.text = outputString
+            Input = formatOutput(result: result)
+            operationValue.text = Input
         }
         else {
             let alert = UIAlertController(
