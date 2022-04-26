@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     //CUSTOM FUNCTIONS
     func clearAll() {
         Input = ""
-        operationValue.text = ""
+        operationValue.text = "0"
     }
     
     func addInput(value: String) {
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             return String(format: "%.0f", result)
         }
         else {
-            return String(format: "%.2f", result)
+            return String(result)
         }
     }
     
