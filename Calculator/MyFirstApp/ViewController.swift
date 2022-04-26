@@ -94,7 +94,6 @@ class ViewController: UIViewController {
     
     @IBAction func posNegative(_ sender: Any) {
         var newNum = ""
-        
         num = Double(Input) ?? 0.0
         num = num * -1
         newNum = formatOutput(result: num)
@@ -105,7 +104,7 @@ class ViewController: UIViewController {
     @IBAction func Percentage(_ sender: Any) {
         var percentage = Double(Input) ?? 0.0
         percentage = percentage * 0.01
-        Input = String(percentage)
+        Input = formatOutput(result: percentage)
         operationValue.text = Input
     }
     
