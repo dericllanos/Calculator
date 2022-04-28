@@ -12,12 +12,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var operationValue: UILabel!
     
     var Input = ""
+    var num = 0.0
     var counter = 0
     var operation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         clearAll()
     }
     
@@ -71,6 +71,17 @@ class ViewController: UIViewController {
         return true
     }
     
+    func errorHandler() {
+        let alert = UIAlertController(
+            title: "Invalid Input",
+            message: "Error",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default))
+        self.present(alert, animated: true, completion: nil)
+        Input = String(Input.dropLast())
+        operationValue.text = Input
+    }
+    
     func specialCharacter (char: Character) -> Bool {
         if char == "*" {
             return true
@@ -86,23 +97,26 @@ class ViewController: UIViewController {
         }
     }
     
+    func refreshOutput() {
+        Input = formatOutput(result: num)
+        operationValue.text = Input
+    }
+    
     //FUNCTION BUTTONS
     @IBAction func allClear(_ sender: Any) {
         clearAll()
     }
     
     @IBAction func posNegative(_ sender: Any) {
-        var num = Double(Input) ?? 0.0
+        num = Double(Input) ?? 0.0
         num = num * -1
-        Input = formatOutput(result: num)
-        operationValue.text = Input
+        refreshOutput()
     }
     
     @IBAction func Percentage(_ sender: Any) {
-        var percentage = Double(Input) ?? 0.0
-        percentage = percentage * 0.01
-        Input = formatOutput(result: percentage)
-        operationValue.text = Input
+        num = Double(Input) ?? 0.0
+        num = num * 0.01
+        refreshOutput()
     }
     
     @IBAction func decimal(_ sender: Any) {
@@ -119,33 +133,30 @@ class ViewController: UIViewController {
                 Input += ".00"
             }
             else if Input.contains(".") {
-                let check = Input.components(separatedBy: ".")
-                let check2 = Input.components(separatedBy: operation)
-                let after = check[1]
-                let after1 = check2[0]
-                
-                var word = Input
-                
-                if after.isEmpty || after1.isEmpty {
-                    word = word.replacingOccurrences(of: ".", with: ".0")
-                    Input = word
-                    counter = 0
+                if operation == "" {
+                    let formatNum = Double(Input) ?? 0.0
+                    Input = formatOutput(result: formatNum)
+                }
+                else {
+                    let operationSplit = Input.components(separatedBy: operation)
+                    
+                    let before = operationSplit[0]
+                    let after = operationSplit[1]
+                    
+                    let formatNum = Double(before) ?? 0.0
+                    let formatNum2 = Double(after) ?? 0.0
+                    Input = String(formatNum) + operation + String(formatNum2)
                 }
             }
             
             let Expression = NSExpression(format: Input)
-            let result = Expression.expressionValue(with: nil, context: nil) as! Double
-            Input = formatOutput(result: result)
-            operationValue.text = Input
+            num = Expression.expressionValue(with: nil, context: nil) as! Double
+            refreshOutput()
         }
         else {
-            let alert = UIAlertController(
-                title: "Invalid Input",
-                message: "Error",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default))
-            self.present(alert, animated: true, completion: nil)
+            errorHandler()
         }
+        counter = 0
     }
     
     @IBAction func Add(_ sender: Any) {
