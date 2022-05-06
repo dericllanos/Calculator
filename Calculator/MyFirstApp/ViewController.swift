@@ -102,6 +102,32 @@ class ViewController: UIViewController {
         operationValue.text = Input
     }
     
+    func funcEquals() {
+        if !Input.contains(".") {
+            Input += ".00"
+        }
+        else if Input.contains(".") {
+            if operation == "" {
+                let formatNum = Double(Input) ?? 0.0
+                Input = formatOutput(result: formatNum)
+            }
+            else {
+                let operationSplit = Input.components(separatedBy: operation)
+                
+                let before = operationSplit[0]
+                let after = operationSplit[1]
+                
+                let formatNum = Double(before) ?? 0.0
+                let formatNum2 = Double(after) ?? 0.0
+                Input = String(formatNum) + operation + String(formatNum2)
+            }
+        }
+        
+        let Expression = NSExpression(format: Input)
+        num = Expression.expressionValue(with: nil, context: nil) as! Double
+        refreshOutput()
+    }
+    
     //FUNCTION BUTTONS
     @IBAction func allClear(_ sender: Any) {
         clearAll()
@@ -129,29 +155,7 @@ class ViewController: UIViewController {
     
     @IBAction func Equals(_ sender: Any) {
         if validInput() {
-            if !Input.contains(".") {
-                Input += ".00"
-            }
-            else if Input.contains(".") {
-                if operation == "" {
-                    let formatNum = Double(Input) ?? 0.0
-                    Input = formatOutput(result: formatNum)
-                }
-                else {
-                    let operationSplit = Input.components(separatedBy: operation)
-                    
-                    let before = operationSplit[0]
-                    let after = operationSplit[1]
-                    
-                    let formatNum = Double(before) ?? 0.0
-                    let formatNum2 = Double(after) ?? 0.0
-                    Input = String(formatNum) + operation + String(formatNum2)
-                }
-            }
-            
-            let Expression = NSExpression(format: Input)
-            num = Expression.expressionValue(with: nil, context: nil) as! Double
-            refreshOutput()
+            funcEquals()
         }
         else {
             errorHandler()
